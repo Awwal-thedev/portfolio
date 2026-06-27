@@ -16,20 +16,22 @@ const Navigation = () => {
     <nav className="navigation frosty">
       <div className="nav-container">
         
-        {/* Mobile Hamburger Menu (Left) */}
-        <button 
-          className="mobile-menu-btn" 
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle navigation"
-        >
-          {isOpen ? <X size={20} /> : <Menu size={20} />}
-        </button>
+        <div className="nav-left-group">
+          {/* Mobile Hamburger Menu (Left) */}
+          <button 
+            className="mobile-menu-btn" 
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle navigation"
+          >
+            {isOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
 
-        {/* Brand (Center on mobile, Left on desktop) */}
-        <Link to="/" className="nav-brand" onClick={() => setIsOpen(false)}>
-          <div className="avatar-placeholder">A</div>
-          <span className="brand-name">Awwal Adeyemo</span>
-        </Link>
+          {/* Brand (Center on mobile, Left on desktop) */}
+          <Link to="/" className="nav-brand" onClick={() => setIsOpen(false)}>
+            <div className="avatar-placeholder">A</div>
+            <span className="brand-name">Awwal Adeyemo</span>
+          </Link>
+        </div>
 
         {/* Desktop Links / Mobile Overlay */}
         <div className={`nav-links ${isOpen ? 'active' : ''}`}>

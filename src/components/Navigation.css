@@ -92,6 +92,12 @@
   background-color: var(--bg-secondary);
 }
 
+.nav-left-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
 /* Responsive Overrides */
 @media (max-width: 768px) {
   .desktop-only {
@@ -108,12 +114,12 @@
   }
 
   .nav-brand {
-    position: relative;
     z-index: 101;
   }
 
   .nav-brand span {
-    font-size: 1rem; /* Slightly smaller text so it fits with buttons on both sides */
+    font-size: 1rem; /* Slightly smaller text to fit gracefully */
+    display: block; /* Ensure it's visible now that it's grouped side-by-side */
   }
 
   .mobile-menu-btn {
