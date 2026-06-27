@@ -1,0 +1,131 @@
+.case-study-page {
+  padding-top: 100px;
+  padding-bottom: 6rem;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  margin-bottom: 2rem;
+  transition: color 0.2s ease;
+}
+
+.back-link:hover {
+  color: var(--text-primary);
+}
+
+.cs-header {
+  margin-bottom: 3rem;
+  max-width: 800px;
+}
+
+.cs-header h1 {
+  font-size: 3.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.cs-subtitle {
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+
+.cs-meta {
+  display: flex;
+  gap: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.cs-meta div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.meta-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-tertiary);
+  font-weight: 600;
+}
+
+.meta-value {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.cs-hero-image {
+  margin-bottom: 4rem;
+}
+
+.placeholder-image {
+  width: 100%;
+  height: 500px;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.placeholder-image.small {
+  height: 300px;
+  margin-top: 1.5rem;
+}
+
+.cs-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.cs-section {
+  margin-bottom: 3.5rem;
+}
+
+.cs-section h2 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+.cs-section p {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.tldr-box {
+  background-color: var(--bg-secondary);
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+}
+
+.impact-box {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1.5rem;
+  background-color: rgba(59, 130, 246, 0.05);
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--accent-primary);
+}
+
+.impact-box p {
+  color: var(--text-primary);
+  font-weight: 500;
+  margin: 0;
+}
+
+.text-accent {
+  color: var(--accent-primary);
+  flex-shrink: 0;
+}
