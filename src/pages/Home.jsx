@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, MoveRight, ChevronDown } from 'lucide-react';
+import { motion } from 'framer-motion';
 import './Home.css';
 
 const Home = () => {
@@ -8,16 +9,78 @@ const Home = () => {
     document.getElementById('work').scrollIntoView({ behavior: 'smooth' });
   };
 
+  // Shared Animation Variants
+  const fadeUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 1.5 // Delay metadata until typing is mostly done
+      }
+    }
+  };
+
+  // Typewriter Animation Logic
+  const titleText = "PRODUCT & DESIGN";
+  
+  const typingContainerVariants = {
+    hidden: { opacity: 1 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.08,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const typingCharVariants = {
+    hidden: { opacity: 0, display: "none" },
+    visible: { opacity: 1, display: "inline-block", transition: { duration: 0.01 } }
+  };
+
   return (
     <div className="landing-page" style={{ paddingTop: '200px' }}>
+      
       {/* 1. MASTHEAD HERO SECTION */}
       <section className="hero-masthead container">
         <div className="masthead-header">
-          <h1 className="masthead-title">PRODUCT & DESIGN</h1>
+          {/* Typewriter Text Reveal */}
+          <motion.h1 
+            className="masthead-title"
+            variants={typingContainerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            {titleText.split("").map((char, index) => (
+              <motion.span key={index} variants={typingCharVariants}>
+                {char === " " ? "\u00A0" : char}
+              </motion.span>
+            ))}
+            {/* Blinking Cursor */}
+            <motion.span
+              animate={{ opacity: [1, 0] }}
+              transition={{ repeat: Infinity, duration: 0.8, ease: "linear" }}
+              style={{ display: "inline-block", marginLeft: "4px", borderRight: "0.08em solid var(--text-primary)" }}
+            >
+              &nbsp;
+            </motion.span>
+          </motion.h1>
         </div>
         
-        <div className="masthead-grid">
-          <div className="masthead-col small-col">
+        <motion.div 
+          className="masthead-grid"
+          variants={staggerContainer}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.div className="masthead-col small-col" variants={fadeUp}>
             <div className="masthead-meta">
               <span className="meta-label">Focus</span>
               <span className="meta-value">Enterprise SaaS & AI</span>
@@ -30,9 +93,9 @@ const Home = () => {
               <span className="meta-label">Location</span>
               <span className="meta-value">Global</span>
             </div>
-          </div>
+          </motion.div>
           
-          <div className="masthead-col main-col">
+          <motion.div className="masthead-col main-col" variants={fadeUp}>
             <h2 className="masthead-statement">
               I turn complex workflows into <span className="text-accent">intuitive enterprise experiences.</span>
             </h2>
@@ -40,38 +103,65 @@ const Home = () => {
               Helping healthcare, fintech, and enterprise SaaS organizations build products that reduce cognitive load and drive business outcomes.
             </p>
             <div className="masthead-actions">
-              <button onClick={scrollToWork} className="btn-primary">
+              <motion.button 
+                onClick={scrollToWork} 
+                className="btn-primary"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
                 View selected work <ChevronDown size={18} />
-              </button>
+              </motion.button>
             </div>
-          </div>
+          </motion.div>
           
-          <div className="masthead-col small-col right-col">
+          <motion.div className="masthead-col small-col right-col" variants={fadeUp}>
             <div className="status-indicator">
               <div className="status-dot"></div>
               <span>Available for new opportunities</span>
             </div>
-            <Link to="/about" className="btn-secondary read-more-btn">
-              Read full bio <ArrowRight size={16} />
-            </Link>
-          </div>
-        </div>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Link to="/about" className="btn-secondary read-more-btn">
+                Read full bio <ArrowRight size={16} />
+              </Link>
+            </motion.div>
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* 2. FEATURED WORK SECTION */}
       <section id="work" className="work-section container">
-        <h2 className="section-title">Selected Work</h2>
+        <motion.h2 
+          className="section-title"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+        >
+          Selected Work
+        </motion.h2>
         
         <div className="work-showcase">
           {/* Project 1: Theraptly */}
           <div className="project-feature-card">
-            <div className="project-visual theraptly-visual">
-               {/* Massive visual area for the product screenshot */}
+            <motion.div 
+              className="project-visual theraptly-visual"
+              initial={{ scale: 0.95, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              whileHover={{ scale: 1.02 }}
+            >
                <div className="mockup-placeholder">
                   <span>AI Compliance Dashboard Mockup</span>
                </div>
-            </div>
-            <div className="project-details">
+            </motion.div>
+            <motion.div 
+              className="project-details"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
               <div className="project-tags">
                 <span className="tag">Healthcare</span>
                 <span className="tag">AI Product</span>
@@ -81,19 +171,32 @@ const Home = () => {
                 Designed an AI-powered platform that helps healthcare organizations analyze internal policies against regulatory requirements and generate actionable recommendations.
               </p>
               <Link to="/case-study/theraptly" className="read-case-study">
-                Read Case Study <ArrowRight size={20} />
+                Read Case Study <motion.span whileHover={{ x: 5 }}><ArrowRight size={20} /></motion.span>
               </Link>
-            </div>
+            </motion.div>
           </div>
 
           {/* Project 2: Xentoba */}
           <div className="project-feature-card reverse">
-            <div className="project-visual xentoba-visual">
+            <motion.div 
+              className="project-visual xentoba-visual"
+              initial={{ scale: 0.95, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              whileHover={{ scale: 1.02 }}
+            >
                <div className="mockup-placeholder">
                   <span>Enterprise Tax CRM Mockup</span>
                </div>
-            </div>
-            <div className="project-details">
+            </motion.div>
+            <motion.div 
+              className="project-details"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
               <div className="project-tags">
                 <span className="tag">FinTech</span>
                 <span className="tag">Enterprise CRM</span>
@@ -103,9 +206,9 @@ const Home = () => {
                 A unified enterprise platform for tax firms to manage clients, accounting, workflow automation, and document management at scale.
               </p>
               <Link to="/case-study/xentoba" className="read-case-study">
-                Read Case Study <ArrowRight size={20} />
+                Read Case Study <motion.span whileHover={{ x: 5 }}><ArrowRight size={20} /></motion.span>
               </Link>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -113,36 +216,61 @@ const Home = () => {
       {/* 3. EXPERTISE / SERVICES SECTION */}
       <section className="expertise-section">
         <div className="container">
-          <h2 className="section-title">Core Expertise</h2>
-          <div className="expertise-grid">
-            <div className="expertise-card">
+          <motion.h2 
+            className="section-title"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+          >
+            Core Expertise
+          </motion.h2>
+          
+          <motion.div 
+            className="expertise-grid"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+          >
+            <motion.div className="expertise-card" variants={fadeUp} whileHover={{ y: -10 }}>
               <div className="expertise-icon">🎯</div>
               <h3>Product Strategy</h3>
               <p>Bridging the gap between business goals and user needs through feature planning, journey mapping, and clear product direction.</p>
-            </div>
-            <div className="expertise-card">
+            </motion.div>
+            <motion.div className="expertise-card" variants={fadeUp} whileHover={{ y: -10 }}>
               <div className="expertise-icon">🧩</div>
               <h3>Systems Thinking</h3>
               <p>Organizing complex enterprise information architecture, creating scalable design systems, and ensuring cross-platform consistency.</p>
-            </div>
-            <div className="expertise-card">
+            </motion.div>
+            <motion.div className="expertise-card" variants={fadeUp} whileHover={{ y: -10 }}>
               <div className="expertise-icon">✨</div>
               <h3>Interaction Design</h3>
               <p>Crafting high-density dashboards, user flows, and responsive interfaces that reduce friction and cognitive load for expert users.</p>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
       {/* 4. FOOTER / CTA */}
       <section className="cta-section container">
-        <div className="cta-box">
+        <motion.div 
+          className="cta-box"
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+        >
           <h2>Have a complex product challenge?</h2>
           <p>Let's collaborate to build experiences that scale and perform.</p>
-          <a href="mailto:hello@example.com" className="btn-primary large">
+          <motion.a 
+            href="mailto:hello@example.com" 
+            className="btn-primary large"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
             Get in touch <MoveRight size={20} />
-          </a>
-        </div>
+          </motion.a>
+        </motion.div>
       </section>
     </div>
   );

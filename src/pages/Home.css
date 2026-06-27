@@ -325,7 +325,8 @@
 
 /* 4. CTA SECTION */
 .cta-section {
-  padding: 8rem 1.5rem;
+  padding-top: 8rem;
+  padding-bottom: 4rem; /* Reduced to provide a nice, modest gap at the bottom */
 }
 
 .cta-box {
