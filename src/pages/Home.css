@@ -716,48 +716,6 @@
   margin: 0;
 }
 
-/* 5. PRE-FOOTER CTA BAND */
-.cta-band-section {
-  padding-top: 2rem;
-  padding-bottom: 4rem;
-}
-
-.cta-band {
-  background-color: var(--bg-dark);
-  background-image: radial-gradient(ellipse 70% 400px at 50% 0%, rgba(37, 99, 235, 0.25), transparent);
-  background-repeat: no-repeat;
-  border-radius: 2.5rem;
-  padding: 5rem 3rem;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-.cta-band-title {
-  font-size: clamp(2.25rem, 4.5vw, 3.5rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  color: #ffffff;
-  margin: 0;
-}
-
-.cta-band-subtitle {
-  font-size: 1.25rem;
-  line-height: 1.6;
-  color: var(--text-on-dark-muted);
-  max-width: 540px;
-  margin: 0;
-}
-
-.cta-band .btn-light {
-  margin-top: 0.5rem;
-  padding: 1rem 2.5rem;
-  font-size: 1.125rem;
-  font-weight: 600;
-}
-
 /* 4. CTA SECTION / REVEAL FOOTER */
 .home-content-curtain {
   position: relative;
@@ -974,11 +932,6 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
-  }
-
-  .cta-band {
-    padding: 3.5rem 1.5rem;
-    border-radius: 1.5rem;
   }
   
   .expertise-grid {

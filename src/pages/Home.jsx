@@ -471,30 +471,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 5. PRE-FOOTER CTA BAND */}
-      <section className="cta-band-section container">
-        <motion.div
-          className="cta-band"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="cta-band-title">Have a complex product challenge?</h2>
-          <p className="cta-band-subtitle">
-            Let's turn your workflow into an experience your users actually enjoy. Book a call and get a clear plan within 48 hours.
-          </p>
-          <motion.a
-            href="mailto:awwal.adeyemoola@gmail.com"
-            className="btn-light"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Start a conversation <MoveRight size={16} />
-          </motion.a>
-        </motion.div>
-      </section>
-
       </div> {/* End home-content-curtain */}
 
       {/* 4. FOOTER / CTA (Sticky Reveal) */}
@@ -514,7 +490,7 @@ const Home = () => {
               <div className="footer-cta-wrap">
                 <p>Have a complex product challenge?</p>
                 <motion.a 
-                  href="mailto:awwal.adeyemoola@gmail.com" 
+                  href="mailto:awwaladeyemo004@gmail.com" 
                   className="btn-light"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
