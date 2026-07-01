@@ -440,8 +440,9 @@
 }
 
 .expertise-detail-card:hover {
-  box-shadow: var(--shadow-md);
-  border-color: var(--text-tertiary);
+  box-shadow: 0 25px 50px -12px rgba(37, 99, 235, 0.15);
+  border-color: rgba(37, 99, 235, 0.3);
+  transform: translateY(-5px);
 }
 
 .expertise-detail-header {
@@ -452,10 +453,14 @@
 
 .expertise-number {
   font-family: var(--font-secondary);
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--text-tertiary);
-  opacity: 0.5;
+  font-size: 3rem;
+  font-weight: 900;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0.9;
+  letter-spacing: -0.05em;
+  line-height: 1;
 }
 
 .expertise-detail-title {
@@ -510,7 +515,7 @@
 }
 
 .deliverable-icon {
-  color: var(--text-tertiary);
+  color: var(--accent-primary);
   flex-shrink: 0;
 }
 

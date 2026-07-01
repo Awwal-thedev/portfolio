@@ -88,7 +88,7 @@ const Home = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.8 }}
           >
-            <AsciiPortrait imageSrc="/headshot.png" />
+            <AsciiPortrait imageSrc="/new-headshot.png" />
           </motion.div>
         </div>
         

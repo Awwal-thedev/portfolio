@@ -8,8 +8,8 @@
   --text-secondary: #4b5563;
   --text-tertiary: #9ca3af;
   
-  --accent-primary: #ec4899; /* Vibrant Pink/Magenta */
-  --accent-secondary: #f97316; /* Bright Sunset Orange */
+  --accent-primary: #2563eb; /* Enterprise Blue */
+  --accent-secondary: #0ea5e9; /* Light Ocean Blue */
   --accent-tertiary: #06b6d4; /* Vivid Cyan */
   
   --gradient-primary: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
