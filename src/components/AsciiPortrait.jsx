@@ -22,8 +22,9 @@ export default function AsciiPortrait({ imageSrc }) {
 
     const handleMouseMove = (e) => {
       const rect = canvas.getBoundingClientRect();
-      mouse.x = e.clientX - rect.left;
-      mouse.y = e.clientY - rect.top;
+      // Map CSS pixels to canvas pixels in case the canvas is scaled down responsively
+      mouse.x = (e.clientX - rect.left) * (canvas.width / rect.width);
+      mouse.y = (e.clientY - rect.top) * (canvas.height / rect.height);
     };
 
     const handleMouseLeave = () => {
