@@ -252,91 +252,71 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 3. CAPABILITIES SECTION (Old Expertise style) */}
-      <section className="expertise-section">
-        <div className="container">
-          <motion.h2 
-            className="section-title"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-          >
-            Capabilities
-          </motion.h2>
+      {/* 3. CORE EXPERTISE SECTION (Sticky Scroll Layout - Merged) */}
+      <section className="expertise-sticky-section">
+        <div className="container expertise-sticky-container">
           
-          <motion.div 
-            className="expertise-grid"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-          >
-            <motion.div className="expertise-card" variants={fadeUp} whileHover={{ y: -10 }}>
-              <div className="expertise-icon">🎨</div>
-              <h3>UI/UX Design</h3>
-              <p>Crafting intuitive, user-centered interfaces that reduce friction and elevate the user journey.</p>
-            </motion.div>
-            <motion.div className="expertise-card" variants={fadeUp} whileHover={{ y: -10 }}>
-              <div className="expertise-icon">📦</div>
-              <h3>Design Systems</h3>
-              <p>Building scalable, token-based design architectures to ensure consistency across enterprise teams.</p>
-            </motion.div>
-            <motion.div className="expertise-card" variants={fadeUp} whileHover={{ y: -10 }}>
-              <div className="expertise-icon">💎</div>
-              <h3>Brand Design</h3>
-              <p>Developing cohesive visual identities that communicate purpose and outlive temporary trends.</p>
-            </motion.div>
-            <motion.div className="expertise-card" variants={fadeUp} whileHover={{ y: -10 }}>
-              <div className="expertise-icon">🎯</div>
-              <h3>Product Strategy</h3>
-              <p>Aligning user needs with business goals to define roadmaps and high-impact features.</p>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* 4. CORE EXPERTISE SECTION (New Services glassmorphism style) */}
-      <section className="services-section container">
-        <motion.div 
-          className="services-header"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-        >
-          <h2 className="section-title">Core Expertise</h2>
-          <p className="services-subtitle">Focusing on high-density data and complex workflows.</p>
-        </motion.div>
-
-        <div className="services-grid">
-          {[
-            {
-              title: "Product Strategy",
-              desc: "Bridging the gap between business goals and user needs through feature planning, journey mapping, and clear product direction."
-            },
-            {
-              title: "Systems Thinking",
-              desc: "Organizing complex enterprise information architecture, creating scalable design systems, and ensuring cross-platform consistency."
-            },
-            {
-              title: "Interaction Design",
-              desc: "Crafting high-density dashboards, user flows, and responsive interfaces that reduce friction and cognitive load for expert users."
-            }
-          ].map((service, idx) => (
+          <div className="expertise-sticky-left">
             <motion.div 
-              className="service-card" 
-              key={idx}
+              className="sticky-header"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ delay: idx * 0.1 }}
             >
-              <div className="service-icon-wrap">
-                <Sparkles size={20} />
-              </div>
-              <h3 className="service-title">{service.title}</h3>
-              <p className="service-desc">{service.desc}</p>
+              <h2 className="section-title">Core Expertise</h2>
+              <p className="expertise-sticky-subtitle">Bringing ideas to life across the entire product lifecycle.</p>
             </motion.div>
-          ))}
+          </div>
+
+          <div className="expertise-sticky-right">
+            {[
+              {
+                title: "Product Strategy",
+                desc: "Bridging the gap between business goals and user needs through feature planning, journey mapping, and clear product direction.",
+                deliverables: ["Product Roadmaps", "User Journey Mapping", "Competitive Analysis", "KPI Definition"]
+              },
+              {
+                title: "Design Systems & Architecture",
+                desc: "Organizing complex enterprise information architecture, creating scalable design systems, and ensuring cross-platform consistency.",
+                deliverables: ["Information Architecture", "Design Systems", "Component Libraries", "Scalability Audits"]
+              },
+              {
+                title: "UI/UX & Interaction Design",
+                desc: "Crafting intuitive, high-density dashboards, user flows, and responsive interfaces that reduce friction and cognitive load for expert users.",
+                deliverables: ["Wireframing & Prototyping", "Micro-interactions", "High-Fidelity UI", "Usability Testing"]
+              },
+              {
+                title: "Brand Design",
+                desc: "Developing cohesive visual identities that communicate purpose and outlive temporary trends.",
+                deliverables: ["Visual Identity", "Brand Guidelines", "Typography Systems", "Logo Design"]
+              }
+            ].map((expertise, idx) => (
+              <motion.div 
+                className="expertise-detail-card" 
+                key={idx}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6 }}
+              >
+                <div className="expertise-detail-header">
+                  <div className="expertise-number">0{idx + 1}</div>
+                  <h3 className="expertise-detail-title">{expertise.title}</h3>
+                </div>
+                <p className="expertise-detail-desc">{expertise.desc}</p>
+                
+                <div className="expertise-deliverables">
+                  <h4>Key Deliverables</h4>
+                  <ul>
+                    {expertise.deliverables.map((item, i) => (
+                      <li key={i}><Sparkles size={14} className="deliverable-icon" /> {item}</li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
         </div>
       </section>
 
