@@ -76,10 +76,17 @@ const CaseStudy = () => {
         </header>
 
         <div className="cs-hero-image">
-          {/* Placeholder for actual project mockups */}
-          <div className="placeholder-image">
-            <span className="text-tertiary">Project Mockup / Dashboard</span>
-          </div>
+          {['theraptly', 'xentoba'].includes(id) ? (
+            <img 
+              src={`/${id}-mockup.jpg`} 
+              alt={`${data.title} Mockup`} 
+              className="cs-hero-mockup" 
+            />
+          ) : (
+            <div className="placeholder-image">
+              <span className="text-tertiary">Project Mockup / Dashboard</span>
+            </div>
+          )}
         </div>
 
         <article className="cs-content">

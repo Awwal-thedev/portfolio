@@ -63,6 +63,17 @@
   margin-bottom: 4rem;
 }
 
+.cs-hero-mockup {
+  width: 100%;
+  height: auto;
+  max-height: 600px;
+  object-fit: cover;
+  object-position: top;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-lg);
+}
+
 .placeholder-image {
   width: 100%;
   height: 500px;

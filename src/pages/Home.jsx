@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, MoveRight, ChevronDown } from 'lucide-react';
+import { ArrowRight, MoveRight, ChevronDown, Sparkles } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import AsciiPortrait from '../components/AsciiPortrait';
 import './Home.css';
@@ -252,7 +252,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 3. EXPERTISE / SERVICES SECTION */}
+      {/* 3. CAPABILITIES SECTION (Old Expertise style) */}
       <section className="expertise-section">
         <div className="container">
           <motion.h2 
@@ -261,7 +261,7 @@ const Home = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
           >
-            Core Expertise
+            Capabilities
           </motion.h2>
           
           <motion.div 
@@ -272,21 +272,71 @@ const Home = () => {
             viewport={{ once: true, margin: "-50px" }}
           >
             <motion.div className="expertise-card" variants={fadeUp} whileHover={{ y: -10 }}>
+              <div className="expertise-icon">🎨</div>
+              <h3>UI/UX Design</h3>
+              <p>Crafting intuitive, user-centered interfaces that reduce friction and elevate the user journey.</p>
+            </motion.div>
+            <motion.div className="expertise-card" variants={fadeUp} whileHover={{ y: -10 }}>
+              <div className="expertise-icon">📦</div>
+              <h3>Design Systems</h3>
+              <p>Building scalable, token-based design architectures to ensure consistency across enterprise teams.</p>
+            </motion.div>
+            <motion.div className="expertise-card" variants={fadeUp} whileHover={{ y: -10 }}>
+              <div className="expertise-icon">💎</div>
+              <h3>Brand Design</h3>
+              <p>Developing cohesive visual identities that communicate purpose and outlive temporary trends.</p>
+            </motion.div>
+            <motion.div className="expertise-card" variants={fadeUp} whileHover={{ y: -10 }}>
               <div className="expertise-icon">🎯</div>
               <h3>Product Strategy</h3>
-              <p>Bridging the gap between business goals and user needs through feature planning, journey mapping, and clear product direction.</p>
-            </motion.div>
-            <motion.div className="expertise-card" variants={fadeUp} whileHover={{ y: -10 }}>
-              <div className="expertise-icon">🧩</div>
-              <h3>Systems Thinking</h3>
-              <p>Organizing complex enterprise information architecture, creating scalable design systems, and ensuring cross-platform consistency.</p>
-            </motion.div>
-            <motion.div className="expertise-card" variants={fadeUp} whileHover={{ y: -10 }}>
-              <div className="expertise-icon">✨</div>
-              <h3>Interaction Design</h3>
-              <p>Crafting high-density dashboards, user flows, and responsive interfaces that reduce friction and cognitive load for expert users.</p>
+              <p>Aligning user needs with business goals to define roadmaps and high-impact features.</p>
             </motion.div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* 4. CORE EXPERTISE SECTION (New Services glassmorphism style) */}
+      <section className="services-section container">
+        <motion.div 
+          className="services-header"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          <h2 className="section-title">Core Expertise</h2>
+          <p className="services-subtitle">Focusing on high-density data and complex workflows.</p>
+        </motion.div>
+
+        <div className="services-grid">
+          {[
+            {
+              title: "Product Strategy",
+              desc: "Bridging the gap between business goals and user needs through feature planning, journey mapping, and clear product direction."
+            },
+            {
+              title: "Systems Thinking",
+              desc: "Organizing complex enterprise information architecture, creating scalable design systems, and ensuring cross-platform consistency."
+            },
+            {
+              title: "Interaction Design",
+              desc: "Crafting high-density dashboards, user flows, and responsive interfaces that reduce friction and cognitive load for expert users."
+            }
+          ].map((service, idx) => (
+            <motion.div 
+              className="service-card" 
+              key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ delay: idx * 0.1 }}
+            >
+              <div className="service-icon-wrap">
+                <Sparkles size={20} />
+              </div>
+              <h3 className="service-title">{service.title}</h3>
+              <p className="service-desc">{service.desc}</p>
+            </motion.div>
+          ))}
         </div>
       </section>
 
