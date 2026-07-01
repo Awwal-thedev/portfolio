@@ -1,9 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, MoveRight, ChevronDown, Sparkles } from 'lucide-react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { ArrowRight, MoveRight, ChevronDown, Sparkles, Star } from 'lucide-react';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import AsciiPortrait from '../components/AsciiPortrait';
 import './Home.css';
+
+const faqs = [
+  { q: "How much does a website design and development cost?", a: "It is determined by the complexity of the project. A typical B2B SaaS website ranges from $3,000 to $10,000. Feel free to book a call, and I will provide an exact quote and timeline." },
+  { q: "Do you handle both Design and Development?", a: "Yes. I typically handle the entire lifecycle from UX research and Figma design, all the way to a production-ready Webflow or Framer build." },
+  { q: "Will I get a responsive website?", a: "Absolutely. Every interface I design and build is fully responsive across desktop, tablet, and mobile devices." },
+  { q: "How long does a typical project take?", a: "Depending on the scope, a standard project takes anywhere from 3 to 6 weeks from kickoff to launch." }
+];
+
+const FaqItem = ({ q, a }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <div className={`faq-item ${isOpen ? 'open' : ''}`} onClick={() => setIsOpen(!isOpen)}>
+      <div className="faq-question">
+        <h3 className="faq-q-text">{q}</h3>
+        <ChevronDown className="faq-icon-arrow" size={20} />
+      </div>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div 
+            className="faq-answer-wrap"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <p className="faq-answer-text">{a}</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
+// Flip to true when real testimonials are ready to ship
+const SHOW_TESTIMONIALS = false;
 
 const Home = () => {
   const scrollToWork = () => {
@@ -145,6 +180,12 @@ const Home = () => {
             <p className="masthead-description">
               Helping healthcare, fintech, and enterprise SaaS organizations build products that reduce cognitive load and drive business outcomes.
             </p>
+            <div className="hero-trust-line">
+              <div className="trust-stars">
+                {[...Array(5)].map((_, i) => <Star key={i} size={16} fill="currentColor" strokeWidth={0} />)}
+              </div>
+              <span>Trusted by founders in healthcare, fintech & SaaS</span>
+            </div>
             <div className="masthead-actions">
               <motion.button 
                 onClick={scrollToWork} 
@@ -173,7 +214,7 @@ const Home = () => {
 
       {/* 2. FEATURED WORK SECTION */}
       <section id="work" className="work-section container">
-        <motion.h2 
+        <motion.h2
           className="section-title"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -206,6 +247,8 @@ const Home = () => {
               <div className="project-tags">
                 <span className="tag">Healthcare</span>
                 <span className="tag">AI Product</span>
+                <span className="tag tech-tag">User Research</span>
+                <span className="tag tech-tag">Prototyping</span>
               </div>
               <h3 className="project-title">Theraptly</h3>
               <p className="project-summary">
@@ -239,6 +282,8 @@ const Home = () => {
               <div className="project-tags">
                 <span className="tag">FinTech</span>
                 <span className="tag">Enterprise CRM</span>
+                <span className="tag tech-tag">Design Systems</span>
+                <span className="tag tech-tag">Figma</span>
               </div>
               <h3 className="project-title">Xentoba</h3>
               <p className="project-summary">
@@ -249,8 +294,96 @@ const Home = () => {
               </Link>
             </motion.div>
           </div>
+
+          {/* Project 3: Dojo Connect */}
+          <div className="project-feature-card">
+            <motion.div
+              className="project-visual dojo-visual"
+              initial={{ scale: 0.95, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              whileHover={{ scale: 1.02 }}
+            >
+               <img src="/dojo-mockup.png" alt="Dojo Connect School Communication Platform" className="project-mockup" />
+            </motion.div>
+            <motion.div
+              className="project-details"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <div className="project-tags">
+                <span className="tag">Education</span>
+                <span className="tag">SaaS</span>
+                <span className="tag tech-tag">User Onboarding</span>
+                <span className="tag tech-tag">Dashboards</span>
+              </div>
+              <h3 className="project-title">Dojo Connect</h3>
+              <p className="project-summary">
+                A school communication platform connecting schools, instructors, parents, and students through attendance, assignments, announcements, and onboarding.
+              </p>
+              <Link to="/case-study/dojo-connect" className="read-case-study">
+                Read Case Study <motion.span whileHover={{ x: 5 }}><ArrowRight size={20} /></motion.span>
+              </Link>
+            </motion.div>
+          </div>
         </div>
       </section>
+
+      {/* 2.5. TESTIMONIALS SECTION (hidden until real testimonials are ready) */}
+      {SHOW_TESTIMONIALS && (
+      <section className="testimonials-section container">
+        <motion.div 
+          className="testimonials-header"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          <h2 className="section-title">What They Say</h2>
+          <p className="testimonials-subtitle">Hear it from founders who've shipped and raised with me.</p>
+        </motion.div>
+
+        <div className="testimonials-grid">
+          {[
+            {
+              text: "Awwal turned our complex healthcare compliance logic into an incredibly intuitive interface. Policy review time dropped from 3 days to 4 hours, and pilot users onboarded without a single training call.",
+              name: "Sarah Jenkins",
+              role: "CEO, Theraptly"
+            },
+            {
+              text: "The enterprise tax platform Awwal designed cut our client onboarding from 2 weeks to 3 days. His design system let us roll out 40+ screens in a single quarter without losing consistency.",
+              name: "Michael Chen",
+              role: "Product Lead, Xentoba"
+            },
+            {
+              text: "Communication was outstanding at every step. The high-density dashboards Awwal delivered reduced our support tickets by nearly 40% in the first month after launch.",
+              name: "David Bradley",
+              role: "Chief Technologist"
+            }
+          ].map((testimonial, idx) => (
+            <motion.div 
+              className="testimonial-card"
+              key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ delay: idx * 0.1 }}
+            >
+              <div className="testimonial-quote">"{testimonial.text}"</div>
+              <div className="testimonial-author">
+                <div className="author-avatar">{testimonial.name.charAt(0)}</div>
+                <div className="author-details">
+                  <h4 className="author-name">{testimonial.name}</h4>
+                  <p className="author-role">{testimonial.role}</p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+      )}
 
       {/* 3. CORE EXPERTISE SECTION (Sticky Scroll Layout - Merged) */}
       <section className="expertise-sticky-section">
@@ -318,6 +451,48 @@ const Home = () => {
           </div>
 
         </div>
+      </section>
+
+      {/* 4. FAQ SECTION */}
+      <section className="faq-section container">
+        <motion.div
+          className="faq-header"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          <h2 className="section-title">Your Questions, Answered</h2>
+        </motion.div>
+
+        <div className="faq-list">
+          {faqs.map((faq, idx) => (
+            <FaqItem key={idx} q={faq.q} a={faq.a} />
+          ))}
+        </div>
+      </section>
+
+      {/* 5. PRE-FOOTER CTA BAND */}
+      <section className="cta-band-section container">
+        <motion.div
+          className="cta-band"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="cta-band-title">Have a complex product challenge?</h2>
+          <p className="cta-band-subtitle">
+            Let's turn your workflow into an experience your users actually enjoy. Book a call and get a clear plan within 48 hours.
+          </p>
+          <motion.a
+            href="mailto:awwal.adeyemoola@gmail.com"
+            className="btn-light"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Start a conversation <MoveRight size={16} />
+          </motion.a>
+        </motion.div>
       </section>
 
       </div> {/* End home-content-curtain */}

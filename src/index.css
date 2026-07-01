@@ -3,6 +3,9 @@
   --bg-primary: #f9fafb;
   --bg-secondary: #ffffff;
   --bg-frost: rgba(255, 255, 255, 0.7);
+  --bg-dark: #0b1120;
+  --border-dark: rgba(255, 255, 255, 0.08);
+  --text-on-dark-muted: #94a3b8;
   
   --text-primary: #111827;
   --text-secondary: #4b5563;

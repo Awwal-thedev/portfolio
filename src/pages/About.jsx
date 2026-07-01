@@ -20,21 +20,21 @@ const About = () => {
       id: 1,
       role: 'Product Designer',
       company: 'Acme Corp',
-      year: '2023 - Present',
+      year: '2025 - Present',
       description: 'Leading design systems and cross-functional product development for enterprise workflow tools, significantly reducing user cognitive load.'
     },
     {
       id: 2,
       role: 'Creative Technologist',
       company: 'Global Tech',
-      year: '2021 - 2023',
+      year: '2023 - 2025',
       description: 'Bridged the gap between engineering and design. Prototyped high-fidelity interactions and drove front-end performance optimizations.'
     },
     {
       id: 3,
       role: 'UI/UX Designer',
       company: 'Startup Inc',
-      year: '2019 - 2021',
+      year: '2021 - 2023',
       description: 'Designed 0-to-1 core features for a rapidly scaling SaaS platform. Conducted extensive user research to refine the core product loop.'
     }
   ];
