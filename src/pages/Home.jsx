@@ -194,9 +194,7 @@ const Home = () => {
               transition={{ duration: 0.8, ease: "easeOut" }}
               whileHover={{ scale: 1.02 }}
             >
-               <div className="mockup-placeholder">
-                  <span>AI Compliance Dashboard Mockup</span>
-               </div>
+               <img src="/theraptly-mockup.jpg" alt="Theraptly AI Compliance Dashboard" className="project-mockup" />
             </motion.div>
             <motion.div 
               className="project-details"
@@ -229,9 +227,7 @@ const Home = () => {
               transition={{ duration: 0.8, ease: "easeOut" }}
               whileHover={{ scale: 1.02 }}
             >
-               <div className="mockup-placeholder">
-                  <span>Enterprise Tax CRM Mockup</span>
-               </div>
+               <img src="/xentoba-mockup.jpg" alt="Xentoba Enterprise Tax CRM" className="project-mockup" />
             </motion.div>
             <motion.div 
               className="project-details"

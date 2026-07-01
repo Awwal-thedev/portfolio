@@ -266,37 +266,32 @@
 
 .project-visual {
   width: 100%;
-  aspect-ratio: 4/3;
-  background-color: var(--bg-secondary);
-  border-radius: 2rem;
-  padding: 2rem;
+  aspect-ratio: 16/11; /* Reduced dimension/height */
+  border-radius: 1.5rem;
+  padding: 1.5rem; /* Original generous glass bezel */
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--border-color);
-  box-shadow: var(--shadow-lg);
+  /* Premium Glassmorphism */
+  background: var(--bg-frost);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04), inset 0 0 0 1px rgba(255, 255, 255, 0.2);
 }
 
-.theraptly-visual {
-  background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
-}
-
-.xentoba-visual {
-  background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
-}
-
-.mockup-placeholder {
+.project-mockup {
   width: 100%;
   height: 100%;
-  background-color: #fff;
+  object-fit: cover;
   border-radius: 1rem;
   box-shadow: var(--shadow-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-tertiary);
-  font-weight: 600;
   border: 1px solid var(--border-color);
+  transition: transform 0.5s ease;
+}
+
+.project-visual:hover .project-mockup {
+  transform: scale(1.02);
 }
 
 .project-details {
