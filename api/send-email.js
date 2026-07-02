@@ -16,7 +16,7 @@ export default async function handler(req, res) {
 
     const { data, error } = await resend.emails.send({
       from: 'Portfolio Contact <onboarding@resend.dev>', // You should verify a domain to replace this
-      to: 'awwaladeyemo004@gmail.com', // Your email where you receive inquiries
+      to: 'oryxstudiosng@gmail.com', // Your email where you receive inquiries
       reply_to: email,
       subject: `New Project Inquiry from ${name}`,
       html: `
