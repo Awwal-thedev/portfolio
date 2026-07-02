@@ -76,7 +76,13 @@ const CaseStudy = () => {
         </header>
 
         <div className="cs-hero-image">
-          {['theraptly', 'xentoba'].includes(id) ? (
+          {id === 'dojo-connect' ? (
+            <img 
+              src="/dojo-mockup.png" 
+              alt={`${data.title} Mockup`} 
+              className="cs-hero-mockup" 
+            />
+          ) : ['theraptly', 'xentoba'].includes(id) ? (
             <img 
               src={`/${id}-mockup.jpg`} 
               alt={`${data.title} Mockup`} 
