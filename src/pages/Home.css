@@ -941,6 +941,12 @@
     align-items: flex-start;
     gap: 0.5rem;
   }
+
+  /* Keep the Product Building badge in the gap between description and trust line */
+  .badge-3 {
+    top: 34%;
+    right: 8%;
+  }
   
   .expertise-grid {
     grid-template-columns: 1fr;
