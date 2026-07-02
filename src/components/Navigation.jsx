@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import './Navigation.css';
 
-const Navigation = () => {
+const Navigation = ({ onOpenContact }) => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
@@ -37,11 +37,26 @@ const Navigation = () => {
         <div className={`nav-links ${isOpen ? 'active' : ''}`}>
           <a href="/#work" className="nav-link" onClick={() => setIsOpen(false)}>Work</a>
           <Link to="/about" className="nav-link" onClick={() => setIsOpen(false)}>About</Link>
-          <a href="mailto:awwaladeyemo004@gmail.com" className="nav-link contact-btn desktop-only" onClick={() => setIsOpen(false)}>Let's Talk</a>
+          <button 
+            className="nav-link contact-btn desktop-only" 
+            onClick={() => {
+              setIsOpen(false);
+              onOpenContact();
+            }}
+            style={{ fontFamily: 'inherit', fontSize: 'inherit', border: 'none', cursor: 'pointer' }}
+          >
+            Let's Talk
+          </button>
         </div>
 
         {/* Mobile Static Contact Button (Right) */}
-        <a href="mailto:awwaladeyemo004@gmail.com" className="nav-link contact-btn mobile-only">Let's Talk</a>
+        <button 
+          className="nav-link contact-btn mobile-only" 
+          onClick={onOpenContact}
+          style={{ fontFamily: 'inherit', fontSize: 'inherit', border: 'none', cursor: 'pointer' }}
+        >
+          Let's Talk
+        </button>
 
       </div>
     </nav>

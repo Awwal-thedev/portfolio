@@ -40,7 +40,7 @@ const FaqItem = ({ q, a }) => {
 // Flip to true when real testimonials are ready to ship
 const SHOW_TESTIMONIALS = false;
 
-const Home = () => {
+const Home = ({ onOpenContact }) => {
   const scrollToWork = () => {
     document.getElementById('work').scrollIntoView({ behavior: 'smooth' });
   };
@@ -489,14 +489,15 @@ const Home = () => {
               
               <div className="footer-cta-wrap">
                 <p>Have a complex product challenge?</p>
-                <motion.a 
-                  href="mailto:awwaladeyemo004@gmail.com" 
+                <motion.button 
+                  onClick={onOpenContact} 
                   className="btn-light"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  style={{ fontFamily: 'inherit', border: 'none', cursor: 'pointer', fontSize: '1rem' }}
                 >
                   Start a conversation <MoveRight size={16} />
-                </motion.a>
+                </motion.button>
               </div>
             </div>
             
